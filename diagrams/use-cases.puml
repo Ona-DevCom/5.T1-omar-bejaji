@@ -1,0 +1,71 @@
+
+@startuml
+
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Usuario" as Usuario
+actor "Residente" as Residente
+actor "No residente" as NoResidente
+actor "Personal de recepción" as Recepcion
+actor "Administrador" as Admin
+actor "Registro municipal" as Registro
+
+Residente --|> Usuario
+NoResidente --|> Usuario
+
+rectangle "Sistema de reservas deportivas" {
+
+  usecase "Consultar disponibilidad" as UC1
+  usecase "Reservar pista" as UC2
+  usecase "Comprobar reglas de reserva" as UC3
+  usecase "Calcular precio" as UC4
+  usecase "Verificar residencia" as UC5
+  usecase "Aplicar suplemento de iluminación" as UC6
+
+  usecase "Consultar reservas" as UC7
+  usecase "Cancelar reserva" as UC8
+  usecase "Comprobar plazo de cancelación" as UC9
+
+  usecase "Crear reserva en recepción" as UC10
+  usecase "Registrar pago en recepción" as UC11
+
+  usecase "Marcar no-show" as UC12
+  usecase "Bloquear usuario durante un mes" as UC13
+
+  usecase "Cerrar pista" as UC14
+  usecase "Consultar estadísticas" as UC15
+  usecase "Gestionar pistas y horarios" as UC16
+}
+
+Usuario --> UC1
+Usuario --> UC2
+Usuario --> UC7
+Usuario --> UC8
+
+Recepcion --> UC10
+Recepcion --> UC11
+Usuario --> UC11
+Recepcion --> UC12
+Recepcion --> UC14
+
+Admin --> UC14
+Admin --> UC15
+Admin --> UC16
+
+Registro --> UC5
+
+UC2 ..> UC1 : <<include>>
+UC2 ..> UC3 : <<include>>
+UC2 ..> UC4 : <<include>>
+UC4 ..> UC5 : <<include>>
+
+UC6 ..> UC4 : <<extend>>\n[Exterior y después de las 20:00]
+
+UC8 ..> UC9 : <<include>>
+
+UC10 ..> UC2 : <<include>>
+
+UC13 ..> UC12 : <<extend>>\n[Después de 3 no-shows]
+
+@enduml

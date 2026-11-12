@@ -1,0 +1,17 @@
+
+# 1. Analysis of the dossier
+
+<!-- Type: Contradiction or Gap. Find at least six. -->
+
+| # | Type | Description (who says what) | Question (to whom) | Assumption and why |
+|---|---|---|---|---|
+| 1 | Contradiction | Pedro Gil says the system should be a responsive website that works on mobile phones. Marta Ruiz prefers a native application downloaded from an app store. | Marta and Pedro: Should the system be a responsive website or a native mobile application? | We will develop a responsive website because Pedro explains that the IT department cannot maintain native Android and iPhone applications. |
+| 2 | Contradiction | Pedro Gil wants the application installed on the town council's Linux servers. Marta Ruiz prefers hosting it in the cloud. | Marta and Pedro: Where should the application be hosted? | We will use the town council's servers because Pedro requires the citizens' data to remain under the council's control. |
+| 3 | Gap | Marta says that residents pay less than non-residents, but she does not explain how the system will verify whether a user is registered in the town. | Marta and Pedro: How can the application verify whether a user is a resident? | The resident status will be verified using the municipal register. The technical integration must be confirmed with the IT department. |
+| 4 | Gap | Javier says that sports clubs have priority when booking courts, but Marta does not identify the clubs or explain their booking conditions. | Marta and Javier: Which clubs have priority and how far in advance can they book? | Only clubs authorised by the town council will receive priority. Their specific booking conditions must be confirmed. |
+| 5 | Gap | Lucía reports that some users do not attend their bookings, but the dossier does not specify when a booking should be marked as a no-show. | Lucía and Javier: When should reception mark a booking as a no-show? | Reception will mark the booking as a no-show after the scheduled start time when the user has not arrived. This is necessary to keep accurate records. |
+| 6 | Gap | Variant B allows users to cancel up to 12 hours before the booking, but it does not explain whether they receive a refund after paying at reception. | Marta: Is the payment refunded when a user cancels at least 12 hours before the booking? | A refund will not be assumed automatically. The town council must confirm its refund policy. |
+| 7 | Gap | Javier explains that outdoor courts close when it rains and that users currently receive WhatsApp messages individually. The future notification process is not defined. | Javier and Marta: How should users be notified when a court closes because of rain or maintenance? | The system will notify affected users automatically. The notification channel must be approved by the town council. |
+| 8 | Gap | The spreadsheet contains a double booking for Padel 1 at 19:30, showing that the current system does not prevent overlapping reservations. | Pedro: How should the application handle two users trying to book the same court at the same time? | The system must prevent two confirmed bookings for the same court and time slot. |
+| 9 | Gap | Variant B specifies a one-month booking ban after three no-shows, but it does not specify the period in which these three no-shows must occur. | Marta and Lucía: Are the three no-shows counted over a specific period or throughout the user's account history? | Until the council confirms the rule, all recorded no-shows will be counted. |
+

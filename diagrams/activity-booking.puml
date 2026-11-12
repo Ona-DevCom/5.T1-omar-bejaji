@@ -1,0 +1,60 @@
+
+@startuml
+
+title Diagrama de actividad - Reservar una pista
+
+start
+
+:El usuario accede al sistema;
+
+:Seleccionar deporte;
+
+:Consultar pistas disponibles;
+
+:Seleccionar pista, fecha y hora;
+
+:Comprobar disponibilidad;
+
+if (¿La pista está disponible?) then (Sí)
+
+  :Comprobar reservas activas;
+
+  if (¿Tiene menos de 3 reservas activas?) then (Sí)
+
+    :Comprobar si el usuario está bloqueado;
+
+    if (¿Está autorizado para reservar?) then (Sí)
+
+      :Calcular el precio;
+
+      :Mostrar resumen de la reserva;
+
+      :El usuario confirma la reserva;
+
+      :Registrar la reserva;
+
+      :Establecer estado pendiente de pago;
+
+      :Mostrar confirmación e instrucciones de pago;
+
+    else (No)
+
+      :Mostrar mensaje de usuario bloqueado;
+
+    endif
+
+  else (No)
+
+    :Mostrar mensaje de límite de reservas alcanzado;
+
+  endif
+
+else (No)
+
+  :Mostrar mensaje de pista no disponible;
+
+endif
+
+stop
+
+@enduml

@@ -1,0 +1,35 @@
+
+@startuml
+
+title Ciclo de vida de una reserva
+
+[*] --> Pendiente_de_pago : Reserva creada
+
+Pendiente_de_pago --> Confirmada : Pago registrado en recepción
+
+Pendiente_de_pago --> Cancelada : Cancelación [12 horas o más antes]
+
+Confirmada --> Cancelada : Cancelación [12 horas o más antes]
+
+Confirmada --> Completada : El usuario utiliza la pista
+
+Confirmada --> No_show : Recepción registra la ausencia
+
+Cancelada --> [*]
+
+Completada --> [*]
+
+No_show --> [*]
+
+note right of No_show
+  Después de 3 no-shows,
+  el usuario queda bloqueado
+  durante un mes.
+end note
+
+note right of Cancelada
+  La política de devolución
+  del importe debe confirmarse.
+end note
+
+@enduml

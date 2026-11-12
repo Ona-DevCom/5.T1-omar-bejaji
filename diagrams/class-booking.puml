@@ -1,0 +1,97 @@
+
+@startuml
+
+title Diagrama de clases - Sistema de reservas deportivas
+
+
+
+
+class User {
+  - id: int
+  - name: String
+  - email: String
+  - phone: String
+  - isResident: boolean
+  - noShowCount: int
+  - blockedUntil: Date
+  + register(): void
+  + bookCourt(): void
+  + cancelBooking(): void
+}
+
+class Court {
+  - id: int
+  - name: String
+  - location: String
+  - isAvailable: boolean
+  + checkAvailability(): boolean
+  + closeCourt(): void
+}
+
+class Sport {
+  - id: int
+  - name: String
+  - durationMinutes: int
+}
+
+class Booking {
+  - id: int
+  - date: Date
+  - startTime: Time
+  - endTime: Time
+  - status: BookingStatus
+  - price: decimal
+  + confirm(): void
+  + cancel(): void
+  + markNoShow(): void
+}
+
+class Payment {
+  - id: int
+  - amount: decimal
+  - paymentDate: Date
+  - method: PaymentMethod
+  + registerPayment(): void
+}
+
+class ReceptionStaff {
+  - id: int
+  - name: String
+  + createBooking(): void
+  + registerPayment(): void
+  + markNoShow(): void
+}
+
+class Administrator {
+  - id: int
+  - name: String
+  + manageCourts(): void
+  + viewStatistics(): void
+}
+
+enum BookingStatus {
+  PENDING_PAYMENT
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+  NO_SHOW
+}
+
+enum PaymentMethod {
+  CASH
+  CARD
+}
+
+User "1" -- "0..*" Booking : makes
+Court "1" -- "0..*" Booking : receives
+Sport "1" -- "0..*" Court : classifies
+Booking "1" -- "0..1" Payment : has
+ReceptionStaff "1" -- "0..*" Payment : registers
+ReceptionStaff "1" -- "0..*" Booking : manages
+
+Booking --> BookingStatus
+Payment --> PaymentMethod
+
+Administrator ..> Court : manages
+
+@enduml
