@@ -11,8 +11,8 @@
 | 1. Analysis of the dossier | [1-analysis.md](1-analysis.md) |
 | 2. Requirements specification | [2-srs.md](2-srs.md) |
 | 3. Use cases | [3-use-cases.md](3-use-cases.md) |
-| 4. Activity diagram | activity-booking.png |
-| 5. State and class diagrams | state-booking.png, class-booking.png |
+| 4. Activity diagram | [activity-booking.png](diagrams/activity-booking.png) |
+| 5. State and class diagrams | [state-booking.png](diagrams/state-booking.png), [class-booking.png](diagrams/class-booking.png) |
 | 6. Review of the AI-generated analysis | [6-ai-review.md](6-ai-review.md) |
 | Self-assessment | [self-assessment.md](self-assessment.md) |
 
@@ -30,4 +30,5 @@
 ### 4. Class diagram
 ![Class diagram](diagrams/class-booking.png)
 
-
+<!-- Show your exported images here, for example: -->
+<!-- ![Activity diagram: Book a court](diagrams/activity-book-court.png) -->
