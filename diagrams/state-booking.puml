@@ -5,15 +5,15 @@ title Ciclo de vida de una reserva
 
 [*] --> Pendiente_de_pago : Reserva creada
 
-Pendiente_de_pago --> Confirmada : Pago registrado en recepción
+Pendiente_de_pago --> Confirmada : Pago registrado en recepción / registrarPago()
 
-Pendiente_de_pago --> Cancelada : Cancelación [12 horas o más antes]
+Pendiente_de_pago --> Cancelada : Cancelación [12 horas o más antes] / liberarHorario()
 
-Confirmada --> Cancelada : Cancelación [12 horas o más antes]
+Confirmada --> Cancelada : Cancelación [12 horas o más antes] / liberarHorario()
 
-Confirmada --> Completada : El usuario utiliza la pista
+Confirmada --> Completada : El usuario utiliza la pista / finalizarReserva()
 
-Confirmada --> No_show : Recepción registra la ausencia
+Confirmada --> No_show : Recepción registra la ausencia / incrementarNoShow()
 
 Cancelada --> [*]
 
@@ -22,9 +22,11 @@ Completada --> [*]
 No_show --> [*]
 
 note right of No_show
-  Después de 3 no-shows,
+  Después de 3 no-shows
+  durante un mes,
   el usuario queda bloqueado
   durante un mes.
+  Acción: bloquearUsuario()
 end note
 
 note right of Cancelada

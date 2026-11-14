@@ -17,7 +17,7 @@
 | FR-07 | El sistema bloqueará los horarios reservados para las escuelas deportivas municipales. | Must | Los horarios fijos de las escuelas aparecen como no disponibles para el público. |
 | FR-08 | El personal podrá cerrar pistas por mantenimiento o lluvia y gestionar las reservas afectadas. | Must | Al cerrar una pista, el sistema impide nuevas reservas y muestra las reservas afectadas. |
 | FR-09 | El sistema calculará el precio de las reservas de los residentes a razón de 4 € por hora. | Must | Una reserva de pádel de 90 minutos para un residente tiene un precio base de 6 €. |
-| FR-10 | El sistema añadirá el suplemento de iluminación a las reservas de pistas exteriores posteriores a las 20:00. | Must | Una reserva exterior posterior a las 20:00 muestra el suplemento de iluminación configurado. |
+| FR-10 | El sistema añadirá un suplemento de 1 € a las reservas de pistas exteriores que se realicen después de las 20:00. | Must | Una reserva de una pista exterior después de las 20:00 muestra un suplemento adicional de 1 € en el precio total. |
 | FR-11 | Los usuarios podrán cancelar sus reservas hasta 12 horas antes de su inicio. | Must | Una cancelación realizada 13 horas antes se acepta, mientras que una realizada 11 horas antes se rechaza. |
 | FR-12 | El sistema permitirá pagar las reservas en recepción, antes de jugar, en efectivo o con tarjeta. | Must | El personal puede registrar un pago en efectivo o con tarjeta y consultar el estado del pago. |
 | FR-13 | El sistema permitirá tener un máximo de tres reservas activas por persona. | Must | Un usuario con tres reservas activas no puede crear una cuarta reserva. |

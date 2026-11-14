@@ -18,7 +18,7 @@ Mark each indicator with **Yes**, **Partly** or **No**, and say where the eviden
 | 4. Activity | Consistent with Book a court, with decisions, guards and partitions | 0.5 | Partly | diagrams/activity-booking.puml |
 | | Applies the rules of the variant | 0.5 | Partly | diagrams/activity-booking.puml |
 | 5. State and class | State diagram of the booking: complete states, events, guards and actions | 0.5 | Partly | diagrams/state-booking.puml |
-| | The state diagram follows the rules of the variant | 0.5 | Partly | diagrams/state-booking.puml |
+| | State diagram of the booking: complete states, events, guards and actions | 0.5 | Yes | diagrams/state-booking.puml |
 | | Classes and attributes come from the dossier and the spreadsheet | 0.5 | Partly | diagrams/class-booking.puml |
 | | Correct relationships and multiplicities | 0.5 | Yes | diagrams/class-booking.puml |
 | | Includes the elements specific to the variant | 0.5 | Partly | diagrams/class-booking.puml |

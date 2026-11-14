@@ -3,58 +3,65 @@
 
 title Diagrama de actividad - Reservar una pista
 
+|Usuario|
 start
-
-:El usuario accede al sistema;
-
+:Acceder al sistema;
 :Seleccionar deporte;
 
-:Consultar pistas disponibles;
+|Sistema|
+:Asignar duración según el deporte;
+:Comprobar si el periodo de reservas está abierto;
 
+if (¿El periodo está abierto?) then ([Sí])
+else ([No])
+    :Mostrar mensaje de reservas no abiertas;
+    stop
+endif
+
+|Usuario|
+:Consultar pistas disponibles;
 :Seleccionar pista, fecha y hora;
 
+|Sistema|
+:Comprobar horarios reservados para escuelas deportivas;
+:Comprobar cierres por mantenimiento o lluvia;
 :Comprobar disponibilidad;
+:Comprobar que no existe otra reserva confirmada;
 
-if (¿La pista está disponible?) then (Sí)
+if (¿La pista está disponible?) then ([Sí])
 
-  :Comprobar reservas activas;
+    :Comprobar reservas activas;
 
-  if (¿Tiene menos de 3 reservas activas?) then (Sí)
+    if (¿Tiene menos de 3 reservas activas?) then ([Sí])
 
-    :Comprobar si el usuario está bloqueado;
+        :Comprobar si el usuario está bloqueado;
 
-    if (¿Está autorizado para reservar?) then (Sí)
+        if (¿El usuario está autorizado?) then ([Sí])
 
-      :Calcular el precio;
+            :Calcular precio según residencia y duración;
+            :Aplicar suplemento de 1 € si es exterior y después de las 20:00;
+            :Mostrar resumen de la reserva;
 
-      :Mostrar resumen de la reserva;
+            |Usuario|
+            :Confirmar la reserva;
 
-      :El usuario confirma la reserva;
+            |Sistema|
+            :Registrar la reserva;
+            :Establecer estado pendiente de pago;
+            :Registrar las instrucciones de pago;
+            :Mostrar confirmación e instrucciones para pagar en recepción;
 
-      :Registrar la reserva;
+        else ([No])
+            :Mostrar mensaje de usuario bloqueado;
+        endif
 
-      :Establecer estado pendiente de pago;
-
-      :Mostrar confirmación e instrucciones de pago;
-
-    else (No)
-
-      :Mostrar mensaje de usuario bloqueado;
-
+    else ([No])
+        :Mostrar mensaje de límite de reservas alcanzado;
     endif
 
-  else (No)
-
-    :Mostrar mensaje de límite de reservas alcanzado;
-
-  endif
-
-else (No)
-
-  :Mostrar mensaje de pista no disponible;
-
+else ([No])
+    :Mostrar mensaje de pista no disponible;
 endif
 
 stop
-
 @enduml

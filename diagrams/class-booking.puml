@@ -3,9 +3,6 @@
 
 title Diagrama de clases - Sistema de reservas deportivas
 
-
-
-
 class User {
   - id: int
   - name: String
@@ -17,6 +14,7 @@ class User {
   + register(): void
   + bookCourt(): void
   + cancelBooking(): void
+  + canBook(): boolean
 }
 
 class Court {
@@ -24,7 +22,9 @@ class Court {
   - name: String
   - location: String
   - isAvailable: boolean
+  - isOutdoor: boolean
   + checkAvailability(): boolean
+  + checkBookingConflict(): boolean
   + closeCourt(): void
 }
 
@@ -44,6 +44,7 @@ class Booking {
   + confirm(): void
   + cancel(): void
   + markNoShow(): void
+  + calculatePrice(): decimal
 }
 
 class Payment {
@@ -83,15 +84,52 @@ enum PaymentMethod {
 }
 
 User "1" -- "0..*" Booking : makes
+
 Court "1" -- "0..*" Booking : receives
+
 Sport "1" -- "0..*" Court : classifies
+
 Booking "1" -- "0..1" Payment : has
+
 ReceptionStaff "1" -- "0..*" Payment : registers
-ReceptionStaff "1" -- "0..*" Booking : manages
+
+ReceptionStaff "0..1" -- "0..*" Booking : manages
 
 Booking --> BookingStatus
+
 Payment --> PaymentMethod
 
 Administrator ..> Court : manages
+
+class BookingPeriod {
+  - openingDay: String
+  - openingTime: Time
+  - advanceDays: int
+  + isOpen(): boolean
+}
+
+class SchoolSchedule {
+  - id: int
+  - day: String
+  - startTime: Time
+  - endTime: Time
+  + isReserved(): boolean
+}
+
+class Notification {
+  - id: int
+  - message: String
+  - date: Date
+  - isRead: boolean
+  + send(): void
+}
+
+BookingPeriod "1" -- "0..*" Booking : controls
+
+Court "1" -- "0..*" SchoolSchedule : has
+
+User "1" -- "0..*" Notification : receives
+
+Booking "1" -- "0..*" Notification : generates
 
 @enduml
